@@ -1,0 +1,89 @@
+!container_width ||= 950px
+!background_color ||= #fff
+!menu_background_color ||= #222
+!container_background_color ||= #aaa
+!font_color ||= #000
+!font_size ||= 16px
+!font_size_s ||= 80%
+!font_size_l ||= 120%
+!link_color ||= #369
+!link_hover_color ||= #39f
+
+body
+  background-color = !background_color
+  color = !font_color
+  font:
+    size = !font_size
+    family: verdana, arial, sans-serif
+  margin: 0
+  padding: 0
+  
+a
+  color = !link_color
+  text-decoration: none
+  &:hover
+    color = !link_hover_color
+    
+.clear
+  clear: both
+  
+.in
+  margin: 1em
+  position: relative
+  
+#container
+  width = !container_width
+  margin: 0 auto
+  background-color = !container_background_color
+  position: relative
+  
+#flash
+  position: absolute
+  top: 2em
+  left: 0
+  width: 100%
+  z-index: 9
+  .message
+    padding: .5em
+    margin: 0 auto
+    width = !container_width / 2
+    text-align: center
+  .notice
+    border: solid 1px #060
+    background-color: #393
+  .error
+    border: solid 1px #600
+    background-color: #c66
+    
+#main
+  min-height: 500px
+  
+#top_menu, #footer
+  background-color = !menu_background_color
+  color: #fff
+  position: relative
+#footer
+  position: absolute
+  width: 100%
+  bottom: 0
+  left: 0
+  font-size = !font_size_s
+  line-height: 2
+  text-align: center
+
+ul.menu
+  margin: 0 1em
+  padding: 0
+  list-style: none
+  font-weight: bold
+  line-height: 1.6
+  li
+    float: left
+    margin-right: 2em
+      
+#current_user
+  position: absolute
+  right: .5em
+  bottom: .5em
+  font-size = !font_size_s
+  line-height = !font_size

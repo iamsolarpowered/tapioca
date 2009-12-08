@@ -1,0 +1,6 @@
+= title "Log In"
+
+- semantic_form_for @user_session do |f|
+  = f.input :login
+  = f.input :password
+  = f.commit_button :button_html => {:value => 'Log In'}

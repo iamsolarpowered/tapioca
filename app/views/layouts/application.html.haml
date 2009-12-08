@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    / Title
+    %title
+      = @title
+      = '::' if @title
+      Created by Tapioca Collective
+      
+    / Styles
+    = stylesheet_link_tag 'application'
+    %style{ :type => 'text/css' }
+      = yield :css
+      
+    / Javascript
+    = javascript_include_tag 'jquery', 'swfobject', 'tapioca'
+    = yield :javascript
+    
+  %body
+    #container
+    
+      #top_menu
+        = render :partial => 'shared/current_user'
+        = render :partial => 'shared/menu'
+        %br.clear
+        
+      #flash
+        - flash.each do |type, value|
+          %div{:class => "#{type} message"}= value
+          
+      #sidebar
+        .in
+      
+      #main
+        .in
+          %h1= @title
+          = yield
+        
+      #footer
+        Footer (coming soon)

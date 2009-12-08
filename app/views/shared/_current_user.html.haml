@@ -1,0 +1,10 @@
+#current_user
+  - unless @current_user.nil?
+    Logged in as
+    = @current_user.login
+    |
+    = link_to 'Log Out', logout_path
+  - else
+    = link_to 'Log In', login_path
+    / or
+    /TODO = link_to 'Sign Up', signup_path
