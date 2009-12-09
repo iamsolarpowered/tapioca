@@ -4,7 +4,7 @@ class Tapioca::User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, :through => :user_roles
   
-  attr_accessible :username, :email, :first_name, :last_name
+  attr_accessible :login, :email, :password, :password_confirmation, :first_name, :last_name
   
   # Checks to see if User has any of the specified roles.
   # role_names can be a symbol, string, or array of symbols or strings.
