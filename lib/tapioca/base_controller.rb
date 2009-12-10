@@ -1,27 +1,40 @@
-ApplicationController.class_eval do
-  inherit_resources # See http://github.com/josevalim/inherited_resources/
+module Tapioca
+  module BaseController
   
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+    private
+    
+    def access_denied
+      flash[:error] = "You don't have permission to perform the last requested action."
+      redirect_to request.env['HTTP_REFERER'] || root_url
+    end
 
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :password_confirmation
+    def current_user  
+      @current_user ||= current_user_session && current_user_session.user
+    end
+
+    def current_user_session
+      @current_user_session ||= UserSession.find
+    end
+    
+    def load_current_user
+      current_user
+    end
+    
+    def menu_items
+      [
+        ['Home', root_path],
+        ['Games', games_path],
+  #      ['Achievements', achievements_path],
+  #      ['People', users_path],
+  #      ['Forums', forums_path]
+      ]
+    end
+    
+    def redirect_back_or_default(default_path=root_path)
+      path = session[:return_to] || default_path
+      session[:return_to] = nil # reset return_to
+      redirect_to path
+    end
   
-  helper :all
-  helper_method :current_user, :current_user_session
-  
-  before_filter :display_user
-  
-  def display_user
-    puts "**********************************"
-    puts " current_user == #{current_user.login} "
-    puts "**********************************"
-  end
-  
-  def current_user
-    @current_user ||= current_user_session && current_user_session.user
-  end
-  
-  def current_user_session
-    @current_user_session ||= UserSession.find
   end
 end
