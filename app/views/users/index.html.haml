@@ -1,0 +1,8 @@
+= title 'People' 
+
+- if can?(:create, User)
+  .actions
+    = link_to 'Add User', new_user_path
+
+%ul#users
+  = render :partial => @users

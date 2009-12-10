@@ -21,13 +21,7 @@ module Tapioca
     end
     
     def menu_items
-      [
-        ['Home', root_path],
-        ['Games', games_path],
-  #      ['Achievements', achievements_path],
-  #      ['People', users_path],
-  #      ['Forums', forums_path]
-      ]
+      []
     end
     
     def redirect_back_or_default(default_path=root_path)

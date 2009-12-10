@@ -1,0 +1,8 @@
+= title "Edit Profile"
+
+- semantic_form_for @user do |f|
+  = f.input :login, :input_html => {:disabled => true}, :hint => 'Login cannot be changed.'
+  = f.input :email
+  = f.input :password, :hint => 'Leave blank to keep unchanged.'
+  = f.input :password_confirmation
+  = f.commit_button

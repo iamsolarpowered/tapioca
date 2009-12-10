@@ -1,0 +1,5 @@
+= title @user.login
+
+- if can?(:update, @user)
+  .actions
+    = link_to 'Edit Profile', edit_user_path(@user)
