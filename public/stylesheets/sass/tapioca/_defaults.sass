@@ -6,8 +6,8 @@
 !font_size ||= 16px
 !font_size_s ||= 80%
 !font_size_l ||= 120%
-!link_color ||= #369
-!link_hover_color ||= #39f
+!link_color ||= #992c2c
+!link_hover_color ||= #2c9999
 
 body
   background-color = !background_color
@@ -92,6 +92,8 @@ ul.menu
   list-style: none
   font-weight: bold
   line-height: 1.6
+  .active a
+    color = !link_hover_color
   li
     float: left
     margin-right: 2em
