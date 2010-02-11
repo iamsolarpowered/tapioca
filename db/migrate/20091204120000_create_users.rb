@@ -3,6 +3,8 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string    :login,               :null => false 
       t.string    :email
+      t.string    :first_name
+      t.string    :last_name
       t.string    :crypted_password,    :null => false
       t.string    :password_salt,       :null => false
       t.string    :persistence_token,   :null => false
@@ -17,6 +19,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :last_login_ip
       t.timestamps
     end
+    add_index :users, :login, :unique => true
+    add_index :users, :persistence_token, :unique => true
+    add_index :users, :single_access_token, :unique => true
+    add_index :users, :perishable_token, :unique => true
   end
   
   def self.down
